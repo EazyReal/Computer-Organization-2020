@@ -14,10 +14,11 @@ arg2: .word 480
 #define str1 "GCD value of "
 #define str2 " and "
 #define str3 " is "
+#define endl "\n"
 str1: .string "GCD value of "
 str2: .string " and "
 str3: .string " is "
-
+endl: .string "\n"
 
 .text
 main:
@@ -37,16 +38,18 @@ main:
         ecall
 
 gcd_base:
-        addi     sp, sp, -16
-        sw       ra, 8(sp) #save return address
-        sw       a0, 0(sp) #save args
+        addi     sp, sp, -32
+        sw       ra, 16(sp) #save return address
+        #sw       a0, 0(sp) #save args
+        #sw       a1, 8(sp)
         addi     t0, a1, -1
         bge      t0, zero, gcd_recursive #branch if n - 1 >= 0
 
         #here n(a1) <= 0
-        #mv       a0, a0
-        addi     sp, sp, 16
-        jalr     x0, x1, 0
+        #lw       a0, 0(sp)
+        #lw       ra, 16(sp) #base case can return without loading back ra
+        addi     sp, sp, 32
+        jalr     x0, ra, 0
 
 gcd_recursive:
         # now is in else
@@ -54,25 +57,32 @@ gcd_recursive:
         # no need swap
 
         loop:
-                bge     a1, a0, done # a1>=a0 break
+                blt     a0, a1, done # a1>=a0 break
                 sub     a0, a0, a1   # a0-=a1
                 j       loop
         done:
                 #now a0 = r(remainder of m%n)
                 #now a1 = n(n)
-                j        swap
+                jal      ra, swap
+                #mv t0, a0
+                #mv a0, a1
+                #mv a1, t0
+                #now a0 = n
+                #now a1 = r
                 jal      ra, gcd_base
 
         #return directly (now a0 should be result)
-                lw       ra, 8(sp)
-                addi     sp, sp, 16
+                lw       ra, 16(sp)
+                addi     sp, sp, 32
                 ret
 
+### need to use function call or ret to main
 swap:
+        
         mv t0, a0
         mv a0, a1
         mv a1, t0
-        ret
+        ret #bug , return to main
 
 
 # expects:
@@ -106,6 +116,10 @@ printResult:
 
         mv       a1, t0
         li       a0, 1
+        ecall
+
+        la       a1, endl
+        li       a0, 4
         ecall
 
         ret
