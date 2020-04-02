@@ -13,7 +13,7 @@ endl: .string "\n"
 
 .text
 main:
-        #call Fibonacci(arg), paran in a0
+        #call Fibonacci(arg), param in a0
         lw       a0, arg
         jal      ra, Fibonacci_base
         #return values of Fibonacci_base/Fibonacci_recursive are both a0
@@ -30,11 +30,15 @@ Fibonacci_base:
         addi     sp, sp, -32
         sw       ra, 16(sp)
         sw       a0, 0(sp)
-        #should be saved cause f is called twice dependent to a0 in one f call
+        #a0 should be saved cause f is called twice dependent to a0 in one f call
         addi     t0, a0, -2
+        #if t0 = ao-2 >= 0, go recursive else is base case
         bge      t0, zero, Fibonacci_recursive
 
-        #mv       a0, a0 #return arg is arg is 0 or 1
+        #mv       a0, a0
+        #return arg is arg is 0 or 1
+        #no need to change a0
+
         #end functioncall
         addi     sp, sp, 32
         jalr     x0, x1, 0

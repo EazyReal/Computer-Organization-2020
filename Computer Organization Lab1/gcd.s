@@ -46,7 +46,7 @@ gcd_base:
         bge      t0, zero, gcd_recursive #branch if n - 1 >= 0
 
         #here n(a1) <= 0
-        #lw       a0, 0(sp)
+        #lw       a0, 0(sp)  #return value(a0) = parameter(a0), no need to change a0
         #lw       ra, 16(sp) #base case can return without loading back ra
         addi     sp, sp, 32
         jalr     x0, ra, 0
@@ -56,6 +56,7 @@ gcd_recursive:
         # calc module => change params => recurse
         # no need swap
 
+        # loop: = module computation
         loop:
                 blt     a0, a1, done # a1>=a0 break
                 sub     a0, a0, a1   # a0-=a1
@@ -64,25 +65,21 @@ gcd_recursive:
                 #now a0 = r(remainder of m%n)
                 #now a1 = n(n)
                 jal      ra, swap
-                #mv t0, a0
-                #mv a0, a1
-                #mv a1, t0
                 #now a0 = n
                 #now a1 = r
                 jal      ra, gcd_base
 
-        #return directly (now a0 should be result)
+                #return directly (now a0 should be result)
                 lw       ra, 16(sp)
                 addi     sp, sp, 32
                 ret
 
-### need to use function call or ret to main
+### need to use jal(to change ra) or ret to main(bug)
 swap:
-        
         mv t0, a0
         mv a0, a1
         mv a1, t0
-        ret #bug , return to main
+        ret #was bug without jal, return to main, debug by step-by-step execution
 
 
 # expects:
@@ -94,6 +91,7 @@ printResult:
         mv       t1, a1
         mv       t2, a2
 
+        # a1 = param, a0 = print type
         la       a1, str1
         li       a0, 4
         ecall
