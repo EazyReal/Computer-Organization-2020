@@ -1,9 +1,10 @@
 .data
 N:.word 10
-str1:.string "Array: "
-str2:.string "\n"
-str3:.string " "
-str4:.string "Sorted: "
+arr: .word 5,3,6,7,31,23,43,12,45,1
+msg1:.string "Array: "
+endl:.string "\n"
+space:.string " "
+msg2:.string "Sorted: "
 
 array1: .word 5
 array2: .word 3
@@ -18,59 +19,49 @@ array10: .word 1
 
 
 .text
-main:       
-        la      a1,str1
+main:
+        # print "Array: "
+        la      a1,msg1
         li      a0,4
         ecall
 
-          
-        addi    sp,sp -88
-        mv      s0,sp
-        lw      a0,array1
-        sw      a0,0(s0)
-        lw      a0,array2
-        sw      a0,8(s0)
-        lw      a0,array3
-        sw      a0,16(s0)
-        lw      a0,array4
-        sw      a0,24(s0)
-        lw      a0,array5
-        sw      a0,32(s0)
-        lw      a0,array6
-        sw      a0,40(s0)
-        lw      a0,array7
-        sw      a0,48(s0)
-        lw      a0,array8
-        sw      a0,56(s0)
-        lw      a0,array9
-        sw      a0,64(s0)
-        lw      a0,array10
-        sw      a0,72(s0)
+        # load array from args 
+        la      t0, arr
+        lw      t2, N
 
-        li      a6,0
-        lw      a7,N
-        jal     ra,print
+        # print array before sorted
+        jal     ra, print_loop
 
-        la      a1,str2
-        li      a0,4
+        # print endl
+        la      a1, endl
+        li      a0, 4
         ecall
 
-        jal     ra,sort
-
-        la      a1,str4
-        li      a0,4
+         # exit call
+        li      a0, 10
         ecall
 
-        li      a6,0
-        lw      a7,N
+        # sort array
+        lw      t0, arr
+        lw      t2, N
+        jal     ra, sort
 
+        # print "Sorted: "
+        la      a1, msg2
+        li      a0, 4
+        ecall
 
-        jal     ra,print
+        # load N back
+        # print array after sorted
+        lw      t2, N
+        jal     ra, print_loop
 
-        la      a1,str2
-        li      a0,4
+        # print endl
+        la      a1, endl
+        li      a0, 4
         ecall        
 
+        # exit call
         li      a0, 10
         ecall
 
@@ -174,23 +165,23 @@ return:
 
 
 
-print:
-        addi    sp,sp,-8
-        sw      ra,0(sp)
-        slli    a5,a6,3
-        add     s5,s0,a5
+print_loop:
+        # print space
+        li      a0, 4
+        la      a1, space
+        ecall 
 
-        lw      a1,0(s5)
-        li      a0,1
-        ecall
+        # print arr[i]
+        li      a0, 1
+        lw      t1, 0(t0)
+        mv      a1, t1
+        ecall 
 
-        la      a1,str3
-        li      a0,4
-        ecall
-
-        addi    a6,a6,1
-        
-        blt     a6,a7,print
-        lw      ra,0(sp)
-        addi    sp,sp,8
-        ret
+        # i = i+1 with t0 move right
+        addi    t0, t0, 4
+        # (n=t2) n--
+        addi    t2, t2, -1
+        # continue to loop, if n!=0
+        bne     t2, zero, loop
+        # else done, return
+        ret     

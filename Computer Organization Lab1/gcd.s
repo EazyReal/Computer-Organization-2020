@@ -1,5 +1,4 @@
-# author : yan-tong lin
-# modified from TA example
+# author : Yan-Tong Lin
 # all right reserves
 # no plagiarism
 
