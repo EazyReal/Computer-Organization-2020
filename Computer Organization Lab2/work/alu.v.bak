@@ -36,7 +36,7 @@ wire            overflow;
 //for slt 
 wire            eq31;
 wire            lt;
-wire            set;
+wire            setzero; //as constant zero
 
 //control
 reg [1:0] oper;
@@ -44,10 +44,13 @@ wire [31:0] carry; //carry[i] means carry "for" i th bit, not "of" i th bit
 reg a_in;
 reg b_in;
 
-//ZCY flag 
+//2-complement for -b
 assign carry[0] = (ALU_control==4'b0110)? 1: (ALU_control==4'b0111)? 1: 0; //sub or slt, cin = 1
+
+//ZCY flag
 assign zero = (result == 0) ? 1 : 0; //implicit nor all output gate!
 assign overflow = carry[31] ^ cout; //
+//carry is assigned below
 
 //slt judge
 assign eq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
@@ -109,9 +112,9 @@ parameter NBIT = 30;
 generate
 genvar i;
 for (i=1; i<=NBIT; i=i+1)
-begin: 
-alu_top alui( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
-				  .cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
+begin u:
+alu_top alu0( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
+					.cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
 end
 endgenerate 
 

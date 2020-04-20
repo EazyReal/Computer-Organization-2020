@@ -56,9 +56,9 @@ if(done == 0)begin
 			cout = (s1&s2) + (s1&cin) + (s2&cin); 
 			end
 		
-		2'b11:begin//less
+		2'b11:begin//slt
 			result = set;
-			cout = 0;
+			cout = 0; //no carry out for slt
 			end
 	endcase
 	
