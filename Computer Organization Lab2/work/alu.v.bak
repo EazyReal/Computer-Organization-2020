@@ -34,7 +34,7 @@ wire            cout;
 wire            overflow;
 
 //for slt 
-wire            eq31;
+wire            neq31;
 wire            lt;
 wire            setzero; //as constant zero
 
@@ -52,10 +52,12 @@ assign zero = (result == 0) ? 1 : 0; //implicit nor all output gate!
 assign overflow = carry[31] ^ cout; //
 //carry is assigned below
 
-//slt judge
-assign eq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
-assign lt = eq31 ? ~carry[31] : src1[31]; //same => no overflow, not => use a sign(avoid overflow)
-assign setzero = 0;
+//slt judge and set value
+assign neq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
+//not same => see result(no overflow possible when adding a, -b)
+//same => use a's sign(no need to see substracy res to know)
+assign lt = neq31 ? ~carry[31] : src1[31];
+$display(lt);
 //assign res = is_slt ? (lt ? 1 : 0) : res;
 //use set bit instead
 
@@ -100,26 +102,30 @@ always@(*)begin
 					end
 			default: ;
 		endcase
+
+		result <=  (ALU_control == 4'b0111) ? (lt ? 32'h01 : 32'h00 ) : result;
+
 	end
 end
 
+/*
 //diff at lt, signal if substraction is negative or same sign(a, -b) and sign a is neg tive
-alu_top alu0( .src1(src1[0]), .src2(src2[0]), .set(lt), .A_invert(a_in), .B_invert(b_in),
-					.cin(carry[0]), .operation(oper), .result(result[0]), .cout(carry[1]) );
+alu_top alu0( .src1(src1[0]), .src2(src2[0]), .A_invert(a_in), .B_invert(b_in),
+					.cin(carry[0]), .operation(oper), .result(result[0]), .cout(carry[1]) );*/
 
-//for loop declaration of ALU1-30
+//for loop declaration of ALU0-30
 parameter NBIT = 30;
 generate
 genvar i;
-for (i=1; i<=NBIT; i=i+1)
-begin u:
-alu_top alu0( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
-					.cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
+for (i=0; i<=NBIT; i=i+1)
+begin: aluarray
+alu_top alui( .src1(src1[i]), .src2(src2[i]), .A_invert(a_in), .B_invert(b_in),
+				  .cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
 end
 endgenerate 
 
-//diff cout
-alu_last alu31( .src1(src1[31]), .src2(src2[31]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
+//diff cout.
+alu_top alu31( .src1(src1[31]), .src2(src2[31]), .A_invert(a_in), .B_invert(b_in),
 					.cin(carry[31]), .operation(oper), .result(result[31]), .cout(cout) );
 
 
