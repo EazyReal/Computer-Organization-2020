@@ -34,7 +34,7 @@ wire            cout;
 wire            overflow;
 
 //for slt 
-wire            eq31;
+wire            neq31;
 wire            lt;
 wire            setzero; //as constant zero
 
@@ -52,9 +52,11 @@ assign zero = (result == 0) ? 1 : 0; //implicit nor all output gate!
 assign overflow = carry[31] ^ cout; //
 //carry is assigned below
 
-//slt judge
-assign eq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
-assign lt = eq31 ? ~carry[31] : src1[31]; //same => no overflow, not => use a sign(avoid overflow)
+//slt judge and set value
+assign neq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
+//not same => see result(no overflow possible when adding a, -b)
+//same => use a's sign(no need to see substracy res to know)
+assign lt = neq31 ? ~carry[31] : src1[31];
 assign setzero = 0;
 //assign res = is_slt ? (lt ? 1 : 0) : res;
 //use set bit instead
@@ -120,7 +122,7 @@ endgenerate
 
 //diff cout.
 //last is 0
-alu_last alu31( .src1(src1[31]), .src2(src2[31]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
+alu_top alu31( .src1(src1[31]), .src2(src2[31]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
 					.cin(carry[31]), .operation(oper), .result(result[31]), .cout(cout) );
 
 
