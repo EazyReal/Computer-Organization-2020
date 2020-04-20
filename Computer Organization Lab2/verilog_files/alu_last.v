@@ -58,7 +58,7 @@ if(done == 0)begin
 		
 		2'b11:begin//slt
 			result = set;
-			cout = 0; //no carry out for slt
+			cout = 0; //no carry out for slt, this is what is different from top
 			end
 	endcase
 	
