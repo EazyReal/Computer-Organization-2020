@@ -9,108 +9,86 @@ z2
 cModel Technology
 dF:/computer orginization/lab0
 valu
-!s110 1587376309
+Z0 !s110 1587378680
 !i10b 1
-!s100 <EXIm=]aPInfaJ1P^4bB00
-IZmBG`0<Mg@ioY]T28dIzZ0
-Z0 VDg1SIo80bB@j0V0VzS_@n1
-Z1 dF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2
-w1587376300
-8F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\cwh\alu.v
-FF:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\cwh\alu.v
-L0 3
-Z2 OP;L;10.4a;61
+!s100 k>IdX3[WFJVIKWY8>JdPj2
+I99FVG:1h_DgT[U;X^lQ8=1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2
+w1587378294
+8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu.v
+FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu.v
+L0 9
+Z3 OP;L;10.4a;61
 r1
 !s85 0
 31
-!s108 1587376309.000000
-!s107 F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\cwh\alu.v|
-!s90 -reportprogress|300|-work|work|-stats=none|F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\cwh\alu.v|
+Z4 !s108 1587378680.000000
+!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu.v|
 !s101 -O0
 !i113 1
-Z3 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
-vALU_1bit
-!s110 1587289090
-!i10b 1
-!s100 f8`ARLm[<95dML^A<LX_c3
-I=D3[iP6N`k9<6XWRR@z4b1
-R0
-R1
-w1585919420
-8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/ALU_1bit.v
-FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/ALU_1bit.v
-L0 7
-R2
-r1
-!s85 0
-31
-!s108 1587289090.000000
-!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/ALU_1bit.v|
-!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/ALU_1bit.v|
-!s101 -O0
-!i113 1
-R3
-n@a@l@u_1bit
+Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 valu_last
-Z4 !s110 1587376140
+Z6 !s110 1587378681
 !i10b 1
-!s100 f`4_EALJ_l7i8XGb53IiN3
-IZz;ljW54b>[R:eoIN6z3`3
-R0
+!s100 `Rfc6]PBi[OOGTIFh1I7h1
+IY<Obe4[nhIdB[bM5S51Xa3
 R1
-w1587375807
-8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_last.v
-FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_last.v
-L0 22
 R2
+w1587378360
+8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_last.v
+FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_last.v
+L0 9
+R3
 r1
 !s85 0
 31
-Z5 !s108 1587376140.000000
-!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_last.v|
-!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_last.v|
+R4
+!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_last.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_last.v|
 !s101 -O0
 !i113 1
-R3
-valu_top
-R4
-!i10b 1
-!s100 lWOR;e>@7m[QVXm_6YRkJ0
-IS`k04`I:BiGk<75Ci]jRH0
-R0
-R1
-w1587306624
-8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_top.v
-FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_top.v
-L0 23
-R2
-r1
-!s85 0
-31
 R5
-!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_top.v|
-!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/cwh/alu_top.v|
+valu_top
+R0
+!i10b 1
+!s100 S[S2@29[1>NGQ<<]4Wzll2
+IIe3i@Loa1V43146=bcD=^1
+R1
+R2
+w1587377989
+8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_top.v
+FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_top.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+!s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/alu_top.v|
 !s101 -O0
 !i113 1
-R3
+R5
 vtestbench
-R4
+R6
 !i10b 1
 !s100 fONj><z;no_ePFb[6GUzD1
 IBGk`2gzK1h^TO2=RMk>m_0
-R0
 R1
+R2
 w1586323219
 8F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\testbench.v
 FF:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\testbench.v
 L0 7
-R2
+R3
 r1
 !s85 0
 31
-R5
+!s108 1587378681.000000
 !s107 F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\testbench.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:\NCTU2020spring\Computer_Organization2020\Computer Organization Lab2\testbench.v|
 !s101 -O0
 !i113 1
-R3
+R5
