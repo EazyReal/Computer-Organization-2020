@@ -23,7 +23,7 @@ input  [32-1:0] src1;
 input  [32-1:0] src2;
 input  [4-1:0]  ALU_control;
 
-output [32-1:0] result;
+output [32-1:0] result; //output is a wire
 output          zero;
 output          cout;
 output          overflow;
@@ -39,7 +39,6 @@ wire            overflow;
 //for slt 
 wire            neq31;
 wire            lt;
-wire            setzero; //as constant zero
 
 //control
 reg [1:0] oper;
@@ -60,10 +59,9 @@ assign neq31 = src1[31] ^ ~src2[31]; //a, -b same sign or not
 //not same => see result(no overflow possible when adding a, -b)
 //same => use a's sign(no need to see substracy res to know)
 assign lt = neq31 ? ~carry[31] : src1[31];
-//$display(lt);
 //assign res = is_slt ? (lt ? 1 : 0) : res;
-//use set bit instead
 assign result = (ALU_control == 4'b0111) ? (lt ? 32'h01 : 32'h00 ) : result_t;
+
 
 always@(*)begin
 	if(rst_n==1)begin
@@ -110,11 +108,6 @@ always@(*)begin
 	end
 end
 
-/*
-//diff at lt, signal if substraction is negative or same sign(a, -b) and sign a is neg tive
-alu_top alu0( .src1(src1[0]), .src2(src2[0]), .A_invert(a_in), .B_invert(b_in),
-					.cin(carry[0]), .operation(oper), .result(result[0]), .cout(carry[1]) );*/
-
 //for loop declaration of ALU0-30
 parameter NBIT = 30;
 generate
@@ -126,7 +119,7 @@ alu_top alui( .src1(src1[i]), .src2(src2[i]), .A_invert(a_in), .B_invert(b_in),
 end
 endgenerate 
 
-//diff cout.
+//31 diff at cout.
 alu_top alu31( .src1(src1[31]), .src2(src2[31]), .A_invert(a_in), .B_invert(b_in),
 					.cin(carry[31]), .operation(oper), .result(result_t[31]), .cout(cout) );
 

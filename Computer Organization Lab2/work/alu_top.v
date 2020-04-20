@@ -52,7 +52,7 @@ always@( * )begin
 			cout = (s1&s2) + (s1&cin) + (s2&cin); 
 			end
 		
-		2'b11:begin//less
+		2'b11:begin//SLT
 			result = 0;
 			cout = (s1&s2) + (s1&cin) + (s2&cin); 
 			end
