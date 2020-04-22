@@ -5,6 +5,13 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	alu
 
+} {} {}} {F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu_top.v} {1 {vlog -work work -stats=none {F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu_top.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu_top
+
+Top level modules:
+	alu_top
+
 } {} {}} {F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/testbench.v} {1 {vlog -work work -stats=none {F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/testbench.v}
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module testbench

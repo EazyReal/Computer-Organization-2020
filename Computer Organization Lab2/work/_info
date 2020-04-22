@@ -9,7 +9,7 @@ z2
 cModel Technology
 dF:/computer orginization/lab0
 valu
-Z0 !s110 1587394542
+Z0 !s110 1587467772
 !i10b 1
 !s100 CBKZ`m;10P;iYAN439aR90
 IO@HS1NPE<Fd?^zN5^NgLe2
@@ -23,7 +23,7 @@ Z3 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z4 !s108 1587394542.000000
+Z4 !s108 1587467772.000000
 !s107 F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu.v|
 !s101 -O0
@@ -51,13 +51,13 @@ r1
 !i113 1
 R5
 valu_top
-R0
+!s110 1587467773
 !i10b 1
-!s100 @J@D67U072gAI=[W82MN>3
-I8g6aLmPiBb5>JB`FXIQ_@2
+!s100 PFb]nD]QC5X?DC:P8hYY90
+IPEzE<_F56Bo6;XjhT<gZ73
 R1
 R2
-w1587394535
+w1587394726
 8F:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu_top.v
 FF:/NCTU2020spring/Computer_Organization2020/Computer Organization Lab2/work/alu_top.v
 L0 9
