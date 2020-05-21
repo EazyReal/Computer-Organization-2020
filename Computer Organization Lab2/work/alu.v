@@ -111,13 +111,12 @@ alu_top alu0( .src1(src1[0]), .src2(src2[0]), .set(lt), .A_invert(a_in), .B_inve
 
 //for loop declaration of ALU1-30
 parameter NBIT = 30;
+alu_top alu[NBIT:0];
 generate
 genvar i;
 for (i=0; i<=NBIT; i=i+1)
-begin: u
-alu_top alui( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
+alu[i]( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
 				  .cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
-end
 endgenerate 
 
 //diff cout.
