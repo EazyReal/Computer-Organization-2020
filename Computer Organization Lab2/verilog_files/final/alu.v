@@ -110,19 +110,13 @@ end
 
 //for loop declaration of ALU0-30
 parameter NBIT = 30;
-alu_top alu[NBIT:0];
 generate
 genvar i;
 for (i=0; i<=NBIT; i=i+1)
-<<<<<<< HEAD
-alu[i]( .src1(src1[i]), .src2(src2[i]), .set(setzero), .A_invert(a_in), .B_invert(b_in),
-				  .cin(carry[i]), .operation(oper), .result(result[i]), .cout(carry[i+1]) );
-=======
 begin: aluarray
 alu_top alui( .src1(src1[i]), .src2(src2[i]), .A_invert(a_in), .B_invert(b_in),
 				  .cin(carry[i]), .operation(oper), .result(result_t[i]), .cout(carry[i+1]) );
 end
->>>>>>> 06b4060d47e9137b9be56abd32370f7516308637
 endgenerate 
 
 //31 diff at cout.
